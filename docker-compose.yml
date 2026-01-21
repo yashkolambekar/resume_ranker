@@ -5,7 +5,7 @@ services:
     build: .
     container_name: resume-ranker
     ports:
-      - "3000:3000"
+      - "3000"
     volumes:
       # Persist the SQLite database
       - ./resume-ranker.db:/app/resume-ranker.db
