@@ -7,12 +7,14 @@ services:
     ports:
       - "3000"
     volumes:
-      # Persist the SQLite database
-      - ./resume-ranker.db:/app/resume-ranker.db
+     # Persist SQLite database
+      - resume_db:/app/resume-ranker.db
+
       # Persist uploaded resumes
-      - ./public/uploads:/app/public/uploads
-      # Allow runtime configuration changes
-      - ./config.json:/app/config.json
+      - resume_uploads:/app/public/uploads
+
+      # Persist config
+      - resume_config:/app/config.json
     environment:
       - NODE_ENV=production
       - GEMINI_API_KEY=${GEMINI_API_KEY}
