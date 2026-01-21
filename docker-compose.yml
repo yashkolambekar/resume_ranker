@@ -5,21 +5,15 @@ services:
     build: .
     container_name: resume-ranker
     ports:
-      - "3000"
+      - "3000:3000"
     volumes:
-     # Persist SQLite database
       - resume_db:/app/resume-ranker.db
-
-      # Persist uploaded resumes
       - resume_uploads:/app/public/uploads
-
-      # Persist config
-      - resume_config:/app/config.json
+      - resume_config:/app/config   # <-- directory
     environment:
       - NODE_ENV=production
       - GEMINI_API_KEY=${GEMINI_API_KEY}
     restart: unless-stopped
-
 
 volumes:
   resume_db:
