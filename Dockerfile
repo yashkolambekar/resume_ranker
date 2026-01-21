@@ -51,6 +51,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/config.json ./config.json
 # Ensure uploads directory exists and is writable
 RUN mkdir -p public/uploads/resumes && chown -R nextjs:nodejs public
 
+# Allow nextjs user to write to /app directory (for sqlite db creation)
+RUN chown nextjs:nodejs /app
+
 USER nextjs
 
 EXPOSE 3000

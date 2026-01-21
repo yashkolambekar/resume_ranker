@@ -1,4 +1,5 @@
 {
     "uploadRateLimitSeconds": 600,
-    "enableNewRoleCreation": true
+    "enableNewRoleCreation": true,
+    "enableResumeUploads": true
 }

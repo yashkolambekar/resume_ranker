@@ -61,6 +61,13 @@ export async function POST(request: NextRequest) {
             uploadRateLimits.set(ip, now);
         }
 
+        // Feature Toggle Check
+        if (config.enableResumeUploads === false) {
+            return NextResponse.json({
+                error: 'Resume uploads are currently disabled.'
+            }, { status: 403 });
+        }
+
         const formData = await request.formData();
         console.log('FormData received');
 

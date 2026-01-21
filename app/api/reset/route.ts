@@ -3,7 +3,7 @@ import { getDatabase } from '@/lib/db';
 import fs from 'fs/promises';
 import path from 'path';
 
-export async function DELETE() {
+export async function GET() {
     try {
         const db = getDatabase();
 

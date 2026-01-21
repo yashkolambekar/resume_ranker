@@ -7,9 +7,22 @@ let db: Database.Database | null = null;
 
 export function getDatabase() {
     if (!db) {
+        const dbExists = fs.existsSync(dbPath);
         db = new Database(dbPath);
         db.pragma('journal_mode = WAL');
         db.pragma('foreign_keys = ON');
+
+        if (!dbExists) {
+            console.log('New database created. Initializing schema...');
+            try {
+                const schemaPath = path.join(process.cwd(), 'lib', 'schema.sql');
+                const schema = fs.readFileSync(schemaPath, 'utf-8');
+                db.exec(schema);
+                console.log('Database initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize database:', error);
+            }
+        }
     }
     return db;
 }
