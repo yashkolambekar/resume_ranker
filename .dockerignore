@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.env
+.env.local
+resume-ranker.db
+resume-ranker.db-wal
+resume-ranker.db-shm
+public/uploads/resumes/*
+!public/uploads/resumes/.gitkeep

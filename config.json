@@ -1,0 +1,4 @@
+{
+    "uploadRateLimitSeconds": 600,
+    "enableNewRoleCreation": false
+}

@@ -6,4 +6,6 @@ const google = createGoogleGenerativeAI({
 
 const gemma3 = google('gemma-3-27b-it');
 
-export {gemma3};
+const gemini25Flash = google('gemini-2.5-flash')
+
+export { gemma3, gemini25Flash };

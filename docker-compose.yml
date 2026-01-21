@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  resume-ranker:
+    build: .
+    container_name: resume-ranker
+    ports:
+      - "3000:3000"
+    volumes:
+      # Persist the SQLite database
+      - ./resume-ranker.db:/app/resume-ranker.db
+      # Persist uploaded resumes
+      - ./public/uploads:/app/public/uploads
+      # Allow runtime configuration changes
+      - ./config.json:/app/config.json
+    environment:
+      - NODE_ENV=production
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    restart: unless-stopped
