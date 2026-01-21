@@ -19,3 +19,9 @@ services:
       - NODE_ENV=production
       - GEMINI_API_KEY=${GEMINI_API_KEY}
     restart: unless-stopped
+
+
+volumes:
+  resume_db:
+  resume_uploads:
+  resume_config:
