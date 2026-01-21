@@ -6,16 +6,7 @@ services:
     container_name: resume-ranker
     ports:
       - "3000:3000"
-    volumes:
-      - resume_db:/app/resume-ranker.db
-      - resume_uploads:/app/public/uploads
-      - resume_config:/app/config   # <-- directory
     environment:
       - NODE_ENV=production
       - GEMINI_API_KEY=${GEMINI_API_KEY}
     restart: unless-stopped
-
-volumes:
-  resume_db:
-  resume_uploads:
-  resume_config:
